@@ -1,0 +1,3 @@
+import React from 'react';
+import {useEffect,useState} from 'react';import api from '../../services/api';export default function AdminAccounts(){const [items,setItems]=useState([]);useEffect(()=>{api.get('/admin/accounts').then(r=>setItems(r.data.data))},[]);return <section className="admin-page"><div className="container"><h1>Institution accounts</h1><p>Flexible account configuration: cash, one bank account, or multiple accounts per institution.</p><div className="table-wrap"><table><thead><tr><th>Institution</th><th>Account</th><th>Type</th><th>UPI</th></tr></thead><tbody>{items.map(a=><tr key={a._id}><td>{a.institutionId?.name}</td><td>{a.name}</td><td>{a.type}</td><td>{a.upiId||'—'}</td></tr>)}</tbody></table></div></div></section>}
+

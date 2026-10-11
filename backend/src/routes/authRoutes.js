@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import * as controller from '../controllers/authController.js';
+import { requireAuth, allowRoles } from '../middlewares/auth.js';
+import { validate } from '../middlewares/validate.js';
+import { loginSchema, userSchema } from '../validators/schemas.js';
+import { ROLES } from '../constants/roles.js';
+const router = Router();
+router.post('/login', validate(loginSchema), controller.loginController);
+router.get('/me', requireAuth, controller.meController);
+router.post('/users', requireAuth, allowRoles(ROLES.TRUST_ADMIN), validate(userSchema), controller.createUserController);
+export default router;

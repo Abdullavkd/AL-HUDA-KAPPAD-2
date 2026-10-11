@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","collation":{"locale":"simple"}},{"v":{"$numberInt":"2"},"key":{"key":{"$numberInt":"1"}},"name":"key_1","background":true,"unique":true,"collation":{"locale":"simple"}}],"uuid":"db8b9cd407a548f1906bb6fa729d0bbc","collectionName":"sitesettings","type":"collection"}

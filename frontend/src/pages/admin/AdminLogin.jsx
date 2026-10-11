@@ -1,0 +1,5 @@
+﻿import React from 'react';
+import { useState } from 'react'; import {useNavigate} from 'react-router-dom'; import {useAuth} from '../../context/AuthContext';
+export default function AdminLogin(){const {login}=useAuth();const nav=useNavigate();const [email,setEmail]=useState('');const [password,setPassword]=useState('');const [error,setError]=useState('');const submit=async e=>{e.preventDefault();try{await login(email,password);nav('/admin')}catch(err){setError(err.response?.data?.message||'Login failed')}};return <section className="auth-page"><form className="auth-card" onSubmit={submit}><div className="brand-mark">AH</div><h1>Al Huda Admin</h1><p>Sign in to manage the public website and trust content.</p>{error&&<div className="error">{error}</div>}<input type="email" value={email} required onChange={e=>setEmail(e.target.value)} placeholder="Email"/><input type="password" value={password} required onChange={e=>setPassword(e.target.value)} placeholder="Password"/><button className="btn primary">Sign in</button></form></section>}
+
+
